@@ -1,0 +1,13 @@
+# Byte-compiled / optimized
+__pycache__/
+*.pyc
+
+# Environments
+.idea
+env/
+venv/
+cache/
+
+# Dictionaries / data files
+*.csv
+*.zip
