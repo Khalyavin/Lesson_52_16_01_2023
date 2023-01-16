@@ -17,7 +17,8 @@ class MyServer(BaseHTTPRequestHandler):
             json.dump(data, list_file)
 
     def do_GET(self):
-        result_string = json.dumps(self._get_json_from_file())
+#        result_string = json.dumps(self._get_json_from_file())
+        result_string = 'Hello, World wide web!'
 
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
@@ -25,14 +26,15 @@ class MyServer(BaseHTTPRequestHandler):
         self.wfile.write(bytes(result_string, 'UTF-8'))
 
     def do_POST(self):
-        data_from_file = self._get_json_from_file()
+#        data_from_file = self._get_json_from_file()
 
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length)
 
         data_from_request = json.loads(post_data)
-        data_from_file.append(data_from_request)
-        self._write_data_to_json(data_from_file)
+        print(data_from_request)
+#        data_from_file.append(data_from_request)
+#        self._write_data_to_json(data_from_file)
 
         self.send_response(201)
         self.send_header('Content-type', 'application/json')
